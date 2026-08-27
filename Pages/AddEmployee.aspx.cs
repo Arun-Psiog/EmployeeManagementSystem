@@ -6,6 +6,12 @@ namespace EmployeeManagementSystem.Pages
     public partial class AddEmployee : System.Web.UI.Page
     {
         private readonly EmployeeRepository _repo = new EmployeeRepository();
+        /// <summary>
+        /// Handles the <see cref="System.Web.UI.Page.Load"/> event for the AddEmployee page.
+        /// When the page is first requested (not a postback), this method initializes page data by calling <see cref="BindDepartments"/>.
+        /// </summary>
+        /// <param name="sender">The source of the event (typically the page instance).</param>
+        /// <param name="e">An <see cref="System.EventArgs"/> instance containing event data.</param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -13,6 +19,13 @@ namespace EmployeeManagementSystem.Pages
                 BindDepartments();
             }
         }
+        /// <summary>
+        /// Retrieves departments from the repository and binds them to the department DropDownList.
+        /// </summary>
+        /// <remarks>
+        /// The DataTextField is set to "DepartmentName" and the DataValueField is set to "DepartmentId".
+        /// After assigning the DataSource, the DropDownList is databound via <see cref="System.Web.UI.WebControls.ListControl.DataBind"/>.
+        /// </remarks>
         private void BindDepartments()
         {
             ddlDepartment.DataSource = _repo.GetDepartments();
