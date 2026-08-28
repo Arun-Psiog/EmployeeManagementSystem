@@ -84,6 +84,7 @@ namespace EmployeeManagementSystem.Pages
                     }
                 }
             }
+
             Site masterPage = (Site)this.Master;
             masterPage.UpateNameAndROleOfTheUser();
         }
