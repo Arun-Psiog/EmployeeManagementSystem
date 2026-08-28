@@ -8,7 +8,7 @@ namespace EmployeeManagementSystem.MasterPages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserRole"] == null)
+            if (Session["UserRole"] != null)
             {
                 lblUserStatus.Text = $"{Session["UserName"]} ({Session["UserRole"]})";
             }
@@ -23,7 +23,11 @@ namespace EmployeeManagementSystem.MasterPages
             Session.Clear();
             Session.Abandon();
             FormsAuthentication.SignOut();
-            Response.Redirect("~Pages/Login.aspx");
+            Response.Redirect("/Pages/Login.aspx");
+        }
+        public void UpateNameAndROleOfTheUser()
+        {
+            lblUserStatus.Text = $"{Session["UserName"]} ({Session["UserRole"]})";
         }
     }
 }

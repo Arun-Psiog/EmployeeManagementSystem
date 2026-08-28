@@ -33,6 +33,19 @@ namespace EmployeeManagementSystem.Pages
             ddlDepartment.DataValueField = "DepartmentId";
             ddlDepartment.DataBind();
         }
+        /// <summary>
+        /// Handles the Submit button click on the AddEmployee page.
+        /// Validates the page, constructs an <see cref="Employee"/> from the form fields,
+        /// inserts it via the repository, and displays a success or error message.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">Event arguments.</param>
+        /// <remarks>
+        /// On successful insert, input fields are cleared and a success message with
+        /// the generated employee ID is shown. If <c>Session["UserId"]</c> is present,
+        /// it is used as the CreatedBy value; otherwise a default of 1 is used.
+        /// Any exceptions during the operation are caught and displayed to the user.
+        /// </remarks>
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             if (!Page.IsValid) return;
