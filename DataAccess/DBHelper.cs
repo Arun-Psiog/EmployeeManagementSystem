@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
+using MySqlConnector;
 
 namespace EmployeeManagementSystem.DataAccess
 {
@@ -9,7 +9,7 @@ namespace EmployeeManagementSystem.DataAccess
         private static readonly string ConnString = ConfigurationManager.ConnectionStrings["MySqlConn"].ConnectionString;
         public static IDbConnection GetConnection()
         {
-            var conn = new SqlConnection(ConnString);
+            var conn = new MySqlConnection(ConnString);
             conn.Open();
             return conn;
         }
