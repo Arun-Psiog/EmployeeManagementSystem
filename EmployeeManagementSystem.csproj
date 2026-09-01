@@ -190,6 +190,7 @@
     <None Include="MasterPages\Site.Master" />
     <Content Include="Pages\AccessDenied.aspx" />
     <Content Include="Pages\AddEmployee.aspx" />
+    <Content Include="Pages\BulkEmployeeUpload.aspx" />
     <Content Include="Pages\CreatePassword.aspx" />
     <Content Include="Pages\EmployeeList.aspx" />
     <Content Include="Pages\Login.aspx" />
@@ -265,6 +266,8 @@
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BusinessLogic\ActivityLogger.cs" />
+    <Compile Include="BusinessLogic\BackgroundWorkerService.cs" />
+    <Compile Include="BusinessLogic\EmailService.cs" />
     <Compile Include="BusinessLogic\PasswordHelper.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -283,6 +286,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Entities\BulkUploadJob.cs" />
     <Compile Include="Entities\Department.cs.cs" />
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\User.cs" />
@@ -312,6 +316,13 @@
     </Compile>
     <Compile Include="Pages\Basepage.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\BulkEmployeeUpload.aspx.cs">
+      <DependentUpon>BulkEmployeeUpload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\BulkEmployeeUpload.aspx.designer.cs">
+      <DependentUpon>BulkEmployeeUpload.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\CreatePassword.aspx.cs">
       <DependentUpon>CreatePassword.aspx</DependentUpon>
@@ -359,11 +370,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Data\" />
+    <Folder Include="Views\Default\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.0.min.map" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
