@@ -12,7 +12,7 @@ namespace EmployeeManagementSystem.Pages
         protected override void OnPreInit(EventArgs e)
         {
            base.OnPreInit(e);
-            if (Session["User"] == null || Session["UserRole"] == null)
+            if (Session["UserId"] == null || Session["UserRole"] == null)
             {
                 Response.Redirect("~/Pages/Login.aspx");
                 return;
