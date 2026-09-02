@@ -1,0 +1,11 @@
+EmployeeCode,FirstName,LastName,Email,Phone,DepartmentId
+EMP001,Arun,Kavitha,arun.kavitha@company.com,9876543210,1
+EMP002,John,David,john.david@company.com,9876543211,2
+EMP003,Priya,Sharma,priya.sharma@company.com,9876543212,1
+EMP004,Rahul,Kumar,rahul.kumar@company.com,9876543213,3
+EMP005,Anita,Reddy,anita.reddy@company.com,9876543214,2
+EMP006,Vikram,Singh,vikram.singh@company.com,9876543215,4
+EMP007,Meena,Iyer,meena.iyer@company.com,9876543216,1
+EMP008,Karan,Patel,karan.patel@company.com,9876543217,3
+EMP009,Divya,Nair,divya.nair@company.com,9876543218,2
+EMP010,Suresh,Babu,suresh.babu@company.com,9876543219,4
