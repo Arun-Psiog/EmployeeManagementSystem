@@ -1,6 +1,11 @@
-﻿using System;
+﻿using Dapper;
 using EmployeeManagementSystem.DataAccess;
 using EmployeeManagementSystem.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 namespace EmployeeManagementSystem.Pages
 {
     public partial class AddEmployee : System.Web.UI.Page
@@ -16,6 +21,11 @@ namespace EmployeeManagementSystem.Pages
         {
             if (!IsPostBack)
             {
+                if (Session["UserId"] == null || Session["UserRole"] == null)
+                {
+                    Response.Redirect("~/Pages/Login.aspx");
+                    return;
+                }
                 BindDepartments();
             }
         }
@@ -68,6 +78,67 @@ namespace EmployeeManagementSystem.Pages
                 lblMessage.CssClass = "alert alert-success d-block";
                 lblMessage.Visible = true;
                 txtEmpCode.Text = txtFirstName.Text = txtLastName.Text = txtEmail.Text = txtPhone.Text = string.Empty;
+
+
+                EmployeeDetail page = new EmployeeDetail();
+
+                Task.Delay(100);
+                using (var conn = DBHelper.GetConnection())
+                {
+                    var list = conn.ExecuteScalar<int>(@"
+                    SELECT EmployeeId
+                    FROM Employees 
+                    WHERE FirstName = @EmpName;", new { EmpName = emp.FirstName });
+                    page.EmployeeId = new List<int> { list };
+                    if (ddlNoteType != null)
+                    {
+                        conn.Execute(@"
+                    INSERT INTO EmployeeNotes
+                    (
+                        EmployeeId,
+                        CreatedByUserId,
+                        NoteType,
+                        NoteContent,
+                        CreatedAt
+                    )
+                    VALUES
+                    (
+                        @EmployeeId,
+                        @createdByUserId,
+                        @NoteType,
+                        @NoteContent,
+                        NOW()
+                    )",
+                        new
+                        {
+                            EmployeeId = page.EmployeeId[0],
+                            createdByUserId = 1,
+                            NoteType = ddlNoteType.SelectedValue,
+                            NoteContent = txtNote.Text.Trim()
+                        });
+                        return;
+                    }
+
+                    int currentUserId = Session["UserId"] != null ? Convert.ToInt32(Session["UserId"]) : 1;
+
+                    string insertSql = @"
+                    INSERT INTO EmployeeNotes (EmployeeId, CreatedByUserId, NoteType, NoteContent,CreatedAt)
+                    VALUES (@EmpId, @UserId, @Type, NoteContent,@CreatedAt);";
+
+                    conn.Execute(insertSql, new
+                    {
+                        EmpId = page.EmployeeId,
+                        UserId = currentUserId,
+                        Type = "General",
+                        NoteContent = DateTime.Now,
+                        CreatedAt = DateTime.Now
+                    });
+
+
+
+                    page.LoadNotes();
+
+                }
             }
             catch (Exception ex)
             {
@@ -75,6 +146,11 @@ namespace EmployeeManagementSystem.Pages
                 lblMessage.CssClass = "alert alert-danger d-block";
                 lblMessage.Visible = true;
             }
+
+        }
+        protected void btnShowNotes_Click(object sender, EventArgs e)
+        {
+            pnlNotes.Visible = true;
         }
     }
 }
