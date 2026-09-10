@@ -192,6 +192,7 @@
     <Content Include="Pages\AddEmployee.aspx" />
     <Content Include="Pages\BulkEmployeeUpload.aspx" />
     <Content Include="Pages\CreatePassword.aspx" />
+    <Content Include="Pages\EmployeeDetail.aspx" />
     <Content Include="Pages\EmployeeList.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -330,6 +331,13 @@
     </Compile>
     <Compile Include="Pages\CreatePassword.aspx.designer.cs">
       <DependentUpon>CreatePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EmployeeDetail.aspx.cs">
+      <DependentUpon>EmployeeDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\EmployeeDetail.aspx.designer.cs">
+      <DependentUpon>EmployeeDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\EmployeeList.aspx.cs">
       <DependentUpon>EmployeeList.aspx</DependentUpon>

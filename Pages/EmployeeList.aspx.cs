@@ -25,6 +25,12 @@ namespace EmployeeManagementSystem.Pages
         {
             if (!IsPostBack)
             {
+                if (Session["UserId"] == null || Session["UserRole"] == null)
+                {
+                    Response.Redirect("~/Pages/Login.aspx");
+                    return;
+                }
+
                 BindDepartments();
                 LoadData();
             }
@@ -73,6 +79,7 @@ namespace EmployeeManagementSystem.Pages
             if (Session["UserId"]?.ToString() != "1" &&
                 Session["UserId"]?.ToString() != "2")
             {
+                addemployee.Visible = false;
                 foreach (GridViewRow row in gvEmployees.Rows)
                 {
                     LinkButton btnDelete =

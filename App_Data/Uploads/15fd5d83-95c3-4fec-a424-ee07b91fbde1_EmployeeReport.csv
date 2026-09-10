@@ -1,0 +1,28 @@
+EmployeeCode,FullName,Email,Phone,DepartmentName,CreatedAt
+EMP005,Anita Reddy,anita.reddy@company.com,9876543214,Human Resources,2026-08-31
+EMP003,Priya Sharma,priya.sharma@company.com,9876543212,Engineering,2026-08-31
+EMP004,Rahul Kumar,rahul.kumar@company.com,9876543213,Finance,2026-08-31
+EMP001,Arun Kavitha,arun.kavitha@company.com,9876543210,Engineering,2026-08-31
+EMP002,John David,john.david@company.com,9876543211,Human Resources,2026-08-31
+EMP1001,Arun Kumar,arun@gmail.com,9876543201,Engineering,2026-08-28
+EMP1002,John David,john@gmail.com,9876543202,Human Resources,2026-08-28
+EMP1003,Priya S,priya@gmail.com,9876543203,Finance,2026-08-28
+EMP1004,Rahul Kumar,rahul@gmail.com,9876543204,Marketing,2026-08-28
+EMP1005,Sneha Reddy,sneha@gmail.com,9876543205,Engineering,2026-08-28
+EMP1006,Vikram M,vikram@gmail.com,9876543206,Human Resources,2026-08-28
+EMP1007,Meena K,meena@gmail.com,9876543207,Finance,2026-08-28
+EMP1008,Ajay Singh,ajay@gmail.com,9876543208,Marketing,2026-08-28
+EMP1009,Karthik R,karthik@gmail.com,9876543209,Engineering,2026-08-28
+EMP1010,Divya P,divya@gmail.com,9876543210,Human Resources,2026-08-28
+EMP1011,Hari Krishnan,hari@gmail.com,9876543211,Finance,2026-08-28
+EMP1012,Nisha M,nisha@gmail.com,9876543212,Marketing,2026-08-28
+EMP1013,Suresh Babu,suresh@gmail.com,9876543213,Engineering,2026-08-28
+EMP1014,Anitha R,anitha@gmail.com,9876543214,Human Resources,2026-08-28
+EMP1015,Praveen K,praveen@gmail.com,9876543215,Finance,2026-08-28
+EMP1016,Keerthi V,keerthi@gmail.com,9876543216,Marketing,2026-08-28
+EMP1017,Mohan Raj,mohan@gmail.com,9876543217,Engineering,2026-08-28
+EMP1018,Lakshmi N,lakshmi@gmail.com,9876543218,Human Resources,2026-08-28
+EMP1019,Ramesh K,ramesh@gmail.com,9876543219,Finance,2026-08-28
+EMP1020,Pooja S,pooja@gmail.com,9876543220,Marketing,2026-08-28
+32342,3321 3413123,vali@gmail.com,12345678,Human Resources,2026-08-27
+12345,Arun K,abc2@gmail.com,12345678,Engineering,2026-08-27

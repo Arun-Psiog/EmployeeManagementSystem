@@ -35,6 +35,39 @@
             <label class="form-label">Department</label>
             <asp:DropDownList ID="ddlDepartment" runat="server" CssClass="form-select"></asp:DropDownList>
         </div>
-        <asp:Button ID="btnSubmit" runat="server" Text="Save Employee" CssClass="btn btn-primary w-100" OnClick="btnSubmit_Click" />
+        <asp:Button ID="btnShowNotes"
+            runat="server"
+            Text="+ Add Note"
+            CssClass="btn btn-outline-secondary btn-sm"
+            OnClick="btnShowNotes_Click" />
+
+        <asp:Panel ID="pnlNotes"
+            runat="server"
+            Visible="false">
+
+            <div class="mt-3">
+                <label>Note Type</label>
+                <asp:DropDownList ID="ddlNoteType"
+                    runat="server"
+                    CssClass="form-select">
+                    <asp:ListItem Text="Call" />
+                    <asp:ListItem Text="Email" />
+                    <asp:ListItem Text="Meeting" />
+                    <asp:ListItem Text="Follow Up" />
+                </asp:DropDownList>
+            </div>
+
+            <div class="mt-2">
+                <label>Note</label>
+                <asp:TextBox ID="txtNote"
+                    runat="server"
+                    TextMode="MultiLine"
+                    Rows="4"
+                    CssClass="form-control">
+                </asp:TextBox>
+            </div>
+
+        </asp:Panel>
+        <asp:Button ID="btnSubmit" runat="server" Text="Save Employee" CssClass="btn btn-primary w-100 mt-3" OnClick="btnSubmit_Click" />
     </div>
 </asp:Content>

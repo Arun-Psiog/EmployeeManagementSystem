@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h3>Employee Directory</h3>
-        <a href="AddEmployee.aspx" class="btn btn-success btn-sm">+ Add New Employee</a>
+        <a href="AddEmployee.aspx" ID="addemployee" runat="server" class="btn btn-success btn-sm">+ Add New Employee</a>
     </div>
     <div class="card p-3 mb-3 bg-light">
         <div class="row g-2">
@@ -29,6 +29,7 @@
             <asp:TemplateField HeaderText="Actions">
                 <ItemTemplate>
                     <asp:LinkButton ID="btnDelete" runat="server" CommandName="SoftDelete" CommandArgument='<%# Eval("EmployeeId") %>' CssClass="btn btn-sm btn-danger" OnClientClick="return confirm('Confirm soft delete?');">Delete</asp:LinkButton>
+                  <a href='<%# "EmployeeDetail.aspx?id=" +Eval("EmployeeId") %>' class='btn btn-sm btn-info text-white'><i class="bi bi-file-earthmark-text"></i>Notes</a>
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
