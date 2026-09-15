@@ -18,6 +18,9 @@
                 <a class="nav-link" href="/Pages/AddEmployee.aspx">AddEmployee</a>
                 <a class="nav-link" href="/Pages/EmployeeList.aspx">Employee List</a>
                 <a class="nav-link" href="/Pages/BulkEmployeeUpload.aspx">Bulk Employee Upload</a>
+                <a class="nav-link"  ID="liReminders" runat="server" href="/Pages/RemindersDashboard.aspx">
+                    <i class="bi bi-calender-check"></i>Reminders</a>
+
             </div>
             <div class="navbar-nav">
                 <asp:Label ID="lblUserStatus" runat="server" CssClass="nav-link text-white mt-2"></asp:Label>
