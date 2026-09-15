@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h3>Employee Directory</h3>
-        <a href="AddEmployee.aspx" ID="addemployee" runat="server" class="btn btn-success btn-sm">+ Add New Employee</a>
+        <a href="AddEmployee.aspx" id="addemployee" runat="server" class="btn btn-success btn-sm">+ Add New Employee</a>
     </div>
     <div class="card p-3 mb-3 bg-light">
         <div class="row g-2">
@@ -39,4 +39,30 @@
         <asp:Label ID="lblPageStatus" runat="server" CssClass="fw-bold"></asp:Label>
         <asp:Button ID="btnNext" runat="server" Text="Next &raquo;" CssClass="btn btn-outline-secondary" OnClick="btnNext_Click" />
     </div>
+
+    <%--Todays Remainder section--%>
+    <div class="mt-4">
+        <div  id="hideorshow" class="card shadow-sm border-0">
+            <div class="card-header bg-dark text-white fw-bold">Today's Reminders</div>
+            <div class="card-body p-0">
+                <asp:GridView ID="gvTasks" runat="server" AutoGenerateColumns="False"
+                    CssClass="table table-hover align-middle mb-0"
+                    EmptyDataText="No active tasks in your queue.">
+                    <Columns>
+                        <asp:BoundField DataField="EmployeeName" HeaderText="Employee" />
+                        <asp:BoundField DataField="Title" HeaderText="Task Summary" />
+                        <asp:TemplateField HeaderText="Due Date">
+                            <ItemTemplate>
+                                <span class='<%# (bool)Eval("IsOverdue") ? "badge bg-danger" : "badge bg-secondary" %>'>
+                                    <%# Eval("DueDate", "{0:MMM dd, yyyy}") %>
+                                    <%# (bool)Eval("IsOverdue") ? " (Overdue)" : "" %>
+                                </span>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+            </div>
+        </div>
+    </div>
+    <%--End Of Today' Remaninders secion--%>
 </asp:Content>

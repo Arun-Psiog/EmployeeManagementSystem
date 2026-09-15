@@ -1,12 +1,17 @@
-﻿using EmployeeManagementSystem.DataAccess;
+﻿using Dapper;
+using EmployeeManagementSystem.DataAccess;
 using EmployeeManagementSystem.MasterPages;
 using System;
 using System.Web.UI.WebControls;
+using System.Linq;
+
 namespace EmployeeManagementSystem.Pages
 {
     public partial class EmployeeList : System.Web.UI.Page
     {
         private readonly EmployeeRepository _repo = new EmployeeRepository();
+        protected string[] AllowedRoles => new[] { "Admin" };
+        private int ActiveUserId => Session["UserId"] != null ? Convert.ToInt32(Session["UserId"]) : 1;
         private const int PageSize = 5;
         /// <summary>
         /// Gets or sets the current page number for paging operations.
@@ -30,8 +35,14 @@ namespace EmployeeManagementSystem.Pages
                     Response.Redirect("~/Pages/Login.aspx");
                     return;
                 }
-
+                string currentUserRole = Session["UserRole"].ToString();
+                if (AllowedRoles != null && AllowedRoles.Length > 0 && !AllowedRoles.Contains(currentUserRole))
+                {
+                    gvTasks.Visible = false;
+                    //hideorshow.Visible = false;
+                }
                 BindDepartments();
+                BindRemindersGrid();
                 LoadData();
             }
         }
@@ -95,6 +106,7 @@ namespace EmployeeManagementSystem.Pages
             Site masterPage = (Site)this.Master;
             masterPage.UpateNameAndROleOfTheUser();
         }
+
         /// <summary>
         /// Handles the Filter button click event. Resets the current page to the first page
         /// and reloads the employee data using the current filter criteria.
@@ -165,5 +177,30 @@ namespace EmployeeManagementSystem.Pages
                 }
             }
         }
+
+        private void BindRemindersGrid()
+        {
+            using (var conn = DBHelper.GetConnection())
+            {
+                string sql = @"
+                SELECT
+                    r.ReminderId,
+                    e.FirstName AS EmployeeName,
+                    r.Title,
+                    r.DueDate
+                FROM EmployeeReminders r
+                INNER JOIN Employees e
+                    ON r.EmployeeId = e.EmployeeId
+                WHERE r.AssignedToUserId = @UserId
+                    AND r.IsResolved = 0
+                    AND DATE(r.DueDate) <= CURDATE()
+                ORDER BY r.DueDate ASC;";
+
+                var data = conn.Query<TaskItemDto>(sql, new { UserId = ActiveUserId }).ToList();
+                gvTasks.DataSource = data;
+                gvTasks.DataBind();
+            }
+        }
+
     }
 }
