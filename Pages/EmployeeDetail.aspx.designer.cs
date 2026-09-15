@@ -11,88 +11,79 @@ namespace EmployeeManagementSystem.Pages
 {
 
 
-    public partial class EmployeeList
+    public partial class EmployeeDetail
     {
 
         /// <summary>
-        /// addemployee control.
+        /// litEmployeeName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor addemployee;
+        protected global::System.Web.UI.WebControls.Literal litEmployeeName;
 
         /// <summary>
-        /// txtSearch control.
+        /// lblNoteFeedback control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearch;
+        protected global::System.Web.UI.WebControls.Label lblNoteFeedback;
 
         /// <summary>
-        /// ddlFilterDept control.
+        /// ddlNoteType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFilterDept;
+        protected global::System.Web.UI.WebControls.DropDownList ddlNoteType;
 
         /// <summary>
-        /// btnFilter control.
+        /// txtNoteContent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFilter;
+        protected global::System.Web.UI.WebControls.TextBox txtNoteContent;
 
         /// <summary>
-        /// gvEmployees control.
+        /// hfNoteId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvEmployees;
+        protected global::System.Web.UI.WebControls.HiddenField hfNoteId;
 
         /// <summary>
-        /// btnPrev control.
+        /// btnAddNote control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPrev;
+        protected global::System.Web.UI.WebControls.Button btnAddNote;
 
         /// <summary>
-        /// lblPageStatus control.
+        /// rptNotesTimeline control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPageStatus;
+        protected global::System.Web.UI.WebControls.Repeater rptNotesTimeline;
 
         /// <summary>
-        /// btnNext control.
+        /// lblNoNotes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNext;
-
-        /// <summary>
-        /// gvTasks control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvTasks;
+        protected global::System.Web.UI.WebControls.Label lblNoNotes;
     }
 }

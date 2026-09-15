@@ -21,7 +21,7 @@ namespace EmployeeManagementSystem.BusinessLogic
                 }
                 LogEmail(employeeId, toEmail, "Welcome Email", null);
 
-            } 
+            }
             catch (Exception ex)
             {
                 LogEmail(employeeId, toEmail, "Failed to Send Welcome Email", ex.Message);
@@ -33,7 +33,7 @@ namespace EmployeeManagementSystem.BusinessLogic
             using (var conn = DBHelper.GetConnection())
             {
                 string sql = "INSERT INTO EmailLog (EmployeeId, EmailType, RecipientEmail, Status, ErrorMessage, SentData) VALUES (@EmployeeId, 'Welcome_Email', @Email, @Status, @Error, NOW())";
-                conn.Execute(sql, new { EmployeeId = employeeId, Email = email, Status = status, ErrorMessage = errorMessage});
+                conn.Execute(sql, new { EmployeeId = employeeId, Email = email, Status = status, ErrorMessage = errorMessage });
             }
         }
     }

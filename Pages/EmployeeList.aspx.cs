@@ -90,6 +90,7 @@ namespace EmployeeManagementSystem.Pages
             if (Session["UserId"]?.ToString() != "1" &&
                 Session["UserId"]?.ToString() != "2")
             {
+                addemployee.Visible = false;
                 foreach (GridViewRow row in gvEmployees.Rows)
                 {
                     LinkButton btnDelete =
