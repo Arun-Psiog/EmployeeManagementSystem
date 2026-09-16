@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using EmployeeManagementSystem.BusinessLogic;
 using EmployeeManagementSystem.DataAccess;
 using EmployeeManagementSystem.MasterPages;
 using System;
@@ -12,6 +13,12 @@ namespace EmployeeManagementSystem.Pages
         private readonly EmployeeRepository _repo = new EmployeeRepository();
         protected string[] AllowedRoles => new[] { "Admin" };
         private int ActiveUserId => Session["UserId"] != null ? Convert.ToInt32(Session["UserId"]) : 1;
+
+        public class EmployeeItem
+        {
+            public int EmployeeId { get; set; }
+            public string FullName { get; set; }
+        }
         private const int PageSize = 5;
         /// <summary>
         /// Gets or sets the current page number for paging operations.
@@ -44,8 +51,66 @@ namespace EmployeeManagementSystem.Pages
                 BindDepartments();
                 BindRemindersGrid();
                 LoadData();
+                PopulateEmployeeDropdown();
             }
         }
+
+
+
+        private void PopulateEmployeeDropdown()
+        {
+            using (var conn = DBHelper.GetConnection())
+            {
+                string sql = @"
+                                SELECT 
+                                    EmployeeId,
+                                    CONCAT(FirstName, ' ', LastName) AS FullName
+                                FROM Employees
+                                WHERE IsDeleted = 0
+                                ORDER BY FirstName ASC";
+
+                var employees = conn.Query<EmployeeItem>(sql).ToList();
+
+                ddlFieldEmployee.DataSource = employees;
+                ddlFieldEmployee.DataTextField = "FullName";
+                ddlFieldEmployee.DataValueField = "EmployeeId";
+                ddlFieldEmployee.DataBind();
+
+                ddlFieldEmployee.Items.Insert(0, new ListItem("-- Select an Employee --", "0"));
+            }
+        }
+        // When clicking "Load Custom Fields"
+        protected void btnLoadEmployeeFields_Click(object sender, EventArgs e)
+        {
+            int selectedEmpId = Convert.ToInt32(ddlFieldEmployee.SelectedValue);
+
+            if (selectedEmpId > 0)
+            {
+                // Call LoadValues on your user control
+                myCustomFields.LoadValues(selectedEmpId);
+                pnlFieldsContainer.Visible = true;
+                lblCustomFieldMsg.Visible = false;
+            }
+            else
+            {
+                pnlFieldsContainer.Visible = false;
+                lblCustomFieldMsg.CssClass = "alert alert-warning";
+                lblCustomFieldMsg.Text = "Please select a valid employee first.";
+                lblCustomFieldMsg.Visible = true;
+            }
+        }
+
+        // When clicking "Save Custom Fields"
+        protected void btnSaveFields_Click(object sender, EventArgs e)
+        {
+            // Call SaveValues on your user control
+            myCustomFields.SaveValues();
+
+            lblCustomFieldMsg.CssClass = "alert alert-success";
+            lblCustomFieldMsg.Text = "Custom fields saved successfully!";
+            lblCustomFieldMsg.Visible = true;
+        }
+
         private void BindDepartments()
         {
             ddlFilterDept.DataSource = _repo.GetDepartments();
@@ -90,7 +155,6 @@ namespace EmployeeManagementSystem.Pages
             if (Session["UserId"]?.ToString() != "1" &&
                 Session["UserId"]?.ToString() != "2")
             {
-                addemployee.Visible = false;
                 foreach (GridViewRow row in gvEmployees.Rows)
                 {
                     LinkButton btnDelete =

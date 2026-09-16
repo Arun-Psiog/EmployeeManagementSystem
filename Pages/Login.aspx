@@ -5,6 +5,12 @@
 <head runat="server">
     <title>Login - EMS</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <style>
+        body {
+            background: linear-gradient(135deg, #f5f7fa, #dfe9f3);
+            min-height: 100vh;
+        }
+    </style>
 </head>
 <body class="bg-light d-flex align-items-center justify-content-center" style="min-height: 100vh;">
     <form id="form1" runat="server" style="width: 360px;">

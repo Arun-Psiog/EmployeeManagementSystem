@@ -53,6 +53,26 @@ namespace EmployeeManagementSystem.BusinessLogic
             }
         }
 
+        public void UpdateEmployee(Employee emp)
+        {
+            using (var conn = DBHelper.GetConnection())
+            {
+                string sql = @"
+        UPDATE Employees
+        SET
+            EmployeeCode = @EmployeeCode,
+            FirstName = @FirstName,
+            LastName = @LastName,
+            Email = @Email,
+            Phone = @Phone,
+            DepartmentId = @DepartmentId,
+            UpdatedAt = @UpdatedAt
+        WHERE EmployeeId = @EmployeeId";
+
+                conn.Execute(sql, emp);
+            }
+        }
+
         /// <summary>
         /// Retrieves a paginated list of employees matching optional search and department filters.
         /// </summary>
@@ -129,6 +149,21 @@ namespace EmployeeManagementSystem.BusinessLogic
             {
                 string sql = "UPDATE Employees SET IsDeleted = 1, UpdatedBy = @UpdatedBy, UpdatedAt = NOW() WHERE EmployeeId = @EmployeeId";
                 return conn.Execute(sql, new { EmployeeId = employeeId, UpdatedBy = updatedBy }) > 0;
+            }
+        }
+
+        public Employee GetEmployeeById(int employeeId)
+        {
+            using (var conn = DBHelper.GetConnection())
+            {
+                string sql = @"
+            SELECT *
+            FROM Employees
+            WHERE EmployeeId = @EmployeeId";
+
+                return conn.QueryFirstOrDefault<Employee>(
+                    sql,
+                    new { EmployeeId = employeeId });
             }
         }
     }

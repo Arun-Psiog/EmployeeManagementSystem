@@ -184,6 +184,16 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Controls\CustomFieldsControl.ascx" />
+    <Content Include="DataBase\ems_db_activitylog.sql" />
+    <Content Include="DataBase\ems_db_bulkuploadjobdetails.sql" />
+    <Content Include="DataBase\ems_db_bulkuploadjobs.sql" />
+    <Content Include="DataBase\ems_db_departments.sql" />
+    <Content Include="DataBase\ems_db_emaillog.sql" />
+    <Content Include="DataBase\ems_db_employees.sql" />
+    <Content Include="DataBase\ems_db_reportrequests.sql" />
+    <Content Include="DataBase\ems_db_roles.sql" />
+    <Content Include="DataBase\ems_db_users.sql" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -192,6 +202,7 @@
     <Content Include="Pages\AddEmployee.aspx" />
     <Content Include="Pages\BulkEmployeeUpload.aspx" />
     <Content Include="Pages\CreatePassword.aspx" />
+    <Content Include="Pages\Editemployee.aspx" />
     <Content Include="Pages\EmployeeDetail.aspx" />
     <Content Include="Pages\EmployeeList.aspx" />
     <Content Include="Pages\Login.aspx" />
@@ -270,6 +281,7 @@
     <Compile Include="BusinessLogic\ActivityLogger.cs" />
     <Compile Include="BusinessLogic\BackgroundWorkerService.cs" />
     <Compile Include="BusinessLogic\EmailService.cs" />
+    <Compile Include="BusinessLogic\EmployeeRepository.cs" />
     <Compile Include="BusinessLogic\PasswordHelper.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -278,9 +290,14 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\CustomFieldsControl.ascx.cs">
+      <DependentUpon>CustomFieldsControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CustomFieldsControl.ascx.designer.cs">
+      <DependentUpon>CustomFieldsControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="DataAccess\DBHelper.cs" />
     <Compile Include="DataAccess\EmployeeGridDto.cs" />
-    <Compile Include="DataAccess\EmployeeRepository.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -332,6 +349,13 @@
     </Compile>
     <Compile Include="Pages\CreatePassword.aspx.designer.cs">
       <DependentUpon>CreatePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Editemployee.aspx.cs">
+      <DependentUpon>Editemployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Editemployee.aspx.designer.cs">
+      <DependentUpon>Editemployee.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\EmployeeDetail.aspx.cs">
       <DependentUpon>EmployeeDetail.aspx</DependentUpon>

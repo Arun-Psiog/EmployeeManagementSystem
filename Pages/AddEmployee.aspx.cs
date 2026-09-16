@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using EmployeeManagementSystem.DataAccess;
+using EmployeeManagementSystem.BusinessLogic;
 using EmployeeManagementSystem.Entities;
 using System;
 using System.Collections.Generic;
