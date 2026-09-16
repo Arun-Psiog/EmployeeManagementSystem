@@ -5,12 +5,19 @@ A web-based Employee Management System built with ASP.NET Web Forms, Dapper, MyS
 ## Features
 
 ### Employee Management
-- Add new employees
-- View employee directory
-- Search employees by employee code or name
-- Filter employees by department
-- Soft delete employee records
-- Paginated employee listing
+
+## Features
+
+- Admin-only access to Create, Read, Update, and Delete (CRUD) operations
+- Employee-specific Notes and Activity Tracking
+- Bulk Document Upload with Rollback Support
+- Email Service Integration
+- Custom Fields Management
+- Automatic Session Logout Based on Timeout
+- Unauthorized Page Access Restrictions
+- Advanced Filtering and Search Functionality
+- Employee Reminder and Follow-up Management
+
 
 ### Security
 - Login-based authentication
